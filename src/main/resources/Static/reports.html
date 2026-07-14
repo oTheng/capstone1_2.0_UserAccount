@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Reports</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <h2>Ledger</h2>
+
+        </div>
+
+        <ul>
+
+            <li>
+
+                <a href="index.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="index.html">
+
+                    <i class="fa-solid fa-list"></i>
+
+                    Transactions
+
+                </a>
+
+            </li>
+
+            <li class="active">
+
+                <a href="reports.html">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    Reports
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="vendors.html">
+
+                    <i class="fa-solid fa-user-group"></i>
+
+                    Vendors
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="settings.html">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main>
+
+        <header>
+
+            <h1>Financial Reports</h1>
+
+            <p>Accounting Summary</p>
+
+        </header>
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3>Total Deposits</h3>
+
+                <h2 id="reportDeposits">$0.00</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Total Payments</h3>
+
+                <h2 id="reportPayments">$0.00</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Current Balance</h3>
+
+                <h2 id="reportBalance">$0.00</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Total Transactions</h3>
+
+                <h2 id="reportCount">0</h2>
+
+            </div>
+
+        </section>
+
+        <section class="table-section">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>Report</th>
+
+                    <th>Value</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr>
+
+                    <td>Largest Deposit</td>
+
+                    <td id="largestDeposit">$0.00</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Largest Payment</td>
+
+                    <td id="largestPayment">$0.00</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Average Transaction</td>
+
+                    <td id="averageTransaction">$0.00</td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/reports.js"></script>
+
+</body>
+
+</html>

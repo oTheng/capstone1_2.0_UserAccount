@@ -68,14 +68,6 @@ async function loadTransactions() {
 
 }
 
-
-
-document.getElementById("transactionsMenu").onclick=()=>{
-
-    showPage(dashboardPage);
-
-};
-
 // =======================================
 // UPDATE DASHBOARD
 // =======================================
@@ -114,11 +106,6 @@ function updateDashboard(data) {
 
 }
 
-document.getElementById("dashboardMenu").onclick=()=>{
-
-    showPage(dashboardPage);
-
-};
 
 // =======================================
 // RENDER TABLE
@@ -219,46 +206,6 @@ function buildReports(){
     `;
 
 }
-
-document.getElementById("reportsMenu").onclick=()=>{
-
-    buildReports();
-
-    showPage(reportsPage);
-
-};
-
-function loadVendors(){
-
-    let vendors=[...new Set(transactions.map(t=>t.vendor))];
-
-    let html="<ul>";
-
-    vendors.forEach(v=>{
-
-        html+=`<li>${v}</li>`;
-
-    });
-
-    html+="</ul>";
-
-    document.getElementById("vendorContent").innerHTML=html;
-
-}
-
-document.getElementById("vendorsMenu").onclick=()=>{
-
-    loadVendors();
-
-    showPage(vendorsPage);
-
-};
-
-document.getElementById("settingsMenu").onclick=()=>{
-
-    showPage(settingsPage);
-
-};
 
 // =======================================
 // EDIT TRANSACTION
@@ -467,22 +414,6 @@ searchBox.addEventListener("keyup", () => {
     updateDashboard(filtered);
 
 });
-
-const dashboardPage = document.getElementById("dashboardPage");
-const reportsPage = document.getElementById("reportsPage");
-const vendorsPage = document.getElementById("vendorsPage");
-const settingsPage = document.getElementById("settingsPage");
-
-function showPage(page){
-
-    dashboardPage.style.display="none";
-    reportsPage.style.display="none";
-    vendorsPage.style.display="none";
-    settingsPage.style.display="none";
-
-    page.style.display="block";
-
-}
 
 // =======================================
 // START APPLICATION
