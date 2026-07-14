@@ -1,0 +1,775 @@
+/* ===========================
+   RESET
+=========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+}
+
+/* ===========================
+   LAYOUT
+=========================== */
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar {
+    width: 250px;
+    background: #1e3a8a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.logo i {
+    font-size: 32px;
+}
+
+.logo h2 {
+    font-size: 28px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.sidebar li:hover {
+    background: rgba(255,255,255,.15);
+}
+
+.sidebar li.active {
+    background: white;
+    color: #1e3a8a;
+    font-weight: bold;
+}
+
+/* ===========================
+   MAIN
+=========================== */
+
+main {
+    flex: 1;
+    padding: 35px;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+header h1 {
+    color: #1e3a8a;
+    font-size: 34px;
+}
+
+header p {
+    color: gray;
+}
+
+#refreshBtn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#refreshBtn:hover {
+    background: #1d4ed8;
+}
+
+/* ===========================
+   DASHBOARD CARDS
+=========================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card i {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 32px;
+}
+
+.deposits i {
+    color: #16a34a;
+}
+
+.payments i {
+    color: #dc2626;
+}
+
+.balance i {
+    color: #2563eb;
+}
+
+.total i {
+    color: #f59e0b;
+}
+
+/* ===========================
+   TOOLBAR
+=========================== */
+
+.toolbar{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.toolbar input{
+
+    flex:1;
+
+    padding:14px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    background:white;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.toolbar button{
+
+    padding:14px 22px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+#depositBtn{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+#depositBtn:hover{
+
+    background:#15803d;
+
+}
+
+#paymentBtn{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+#paymentBtn:hover{
+
+    background:#b91c1c;
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.table-section{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+th{
+
+    padding:16px;
+
+    text-align:center;
+
+}
+
+td{
+
+    padding:14px;
+
+    text-align:center;
+
+    border-bottom:1px solid #eee;
+
+}
+
+tbody tr{
+
+    transition:.3s;
+
+}
+
+tbody tr:hover{
+
+    background:#f3f6ff;
+
+}
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+
+.editBtn{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    margin-right:8px;
+
+}
+
+.editBtn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.deleteBtn{
+
+    background:#dc2626;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+.deleteBtn:hover{
+
+    background:#b91c1c;
+
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    z-index:1000;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.55);
+
+}
+
+.modal-content{
+
+    width:500px;
+
+    background:white;
+
+    margin:60px auto;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    position:relative;
+
+    animation:popup .3s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+.close{
+
+    position:absolute;
+
+    right:20px;
+
+    top:15px;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:gray;
+
+}
+
+.close:hover{
+
+    color:red;
+
+}
+
+.modal h2{
+
+    color:#1e3a8a;
+
+    margin-bottom:25px;
+
+}
+
+.modal label{
+
+    display:block;
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+}
+
+.modal input,
+
+.modal select{
+
+    width:100%;
+
+    margin-top:8px;
+
+    margin-bottom:15px;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    border:1px solid #ccc;
+
+    font-size:15px;
+
+}
+
+#saveBtn{
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:14px;
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+#saveBtn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN
+=========================================== */
+
+@media (max-width:1200px){
+
+    .cards{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .container{
+
+        flex-direction:column;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        height:auto;
+
+    }
+
+    .toolbar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+}
+
+@media (max-width:700px){
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .modal-content{
+
+        width:90%;
+
+    }
+
+    table{
+
+        font-size:14px;
+
+    }
+
+}
+
+/* ===========================================
+   SCROLLBAR
+=========================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececec;
+
+}
+
+/* ===========================================
+   TABLE ROW ANIMATION
+=========================================== */
+
+tbody tr{
+
+    animation:fadeIn .4s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================================
+   CARD COLORS
+=========================================== */
+
+.deposits{
+
+    border-left:7px solid #22c55e;
+
+}
+
+.payments{
+
+    border-left:7px solid #ef4444;
+
+}
+
+.balance{
+
+    border-left:7px solid #3b82f6;
+
+}
+
+.total{
+
+    border-left:7px solid #f59e0b;
+
+}
+
+/* ===========================================
+   BUTTON EFFECTS
+=========================================== */
+
+button{
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,.18);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+/* ===========================================
+   INPUT EFFECTS
+=========================================== */
+
+input:focus,
+
+select:focus{
+
+    border:1px solid #2563eb;
+
+    outline:none;
+
+    box-shadow:0 0 8px rgba(37,99,235,.25);
+
+}
+
+/* ===========================================
+   CARD ANIMATION
+=========================================== */
+
+.card{
+
+    animation:cardFade .5s ease;
+
+}
+
+@keyframes cardFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================================
+   MODAL BUTTONS
+=========================================== */
+
+#saveBtn{
+
+    font-weight:bold;
+
+    letter-spacing:.5px;
+
+}
+
+/* ===========================================
+   SEARCH BAR ICON SPACE
+=========================================== */
+
+#searchBox{
+
+    padding-left:18px;
+
+}
+
+/* ===========================================
+   TABLE HEADER
+=========================================== */
+
+thead tr{
+
+    height:60px;
+
+}
+
+tbody tr{
+
+    height:55px;
+
+}
+
+/* ===========================================
+   PAGE BACKGROUND
+=========================================== */
+
+main{
+
+    background:#f7f9fc;
+
+}
+
+/* ===========================================
+   FINISHED
+=========================================== */
