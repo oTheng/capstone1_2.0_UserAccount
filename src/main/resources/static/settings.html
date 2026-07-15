@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Settings</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <h2>Ledger</h2>
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-list"></i>
+                    Transactions
+                </a>
+            </li>
+
+            <li>
+                <a href="reports.html">
+                    <i class="fa-solid fa-chart-column"></i>
+                    Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="vendors.html">
+                    <i class="fa-solid fa-user-group"></i>
+                    Vendors
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <main>
+
+        <header>
+
+            <h1>Settings</h1>
+
+            <p>Application Preferences</p>
+
+        </header>
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3>Theme</h3>
+
+                <button id="darkModeBtn">
+                    Toggle Dark Mode
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Export</h3>
+
+                <button id="exportBtn">
+                    Export Transactions
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Search</h3>
+
+                <button id="clearSearchBtn">
+                    Clear Search
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <h3>API Status</h3>
+
+                <h2 id="apiStatus">
+                    Checking...
+                </h2>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/settings.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vendors</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <h2>Ledger</h2>
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-list"></i>
+                    Transactions
+                </a>
+            </li>
+
+            <li>
+                <a href="reports.html">
+                    <i class="fa-solid fa-chart-column"></i>
+                    Reports
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="vendors.html">
+                    <i class="fa-solid fa-user-group"></i>
+                    Vendors
+                </a>
+            </li>
+
+            <li>
+                <a href="settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main>
+
+        <header>
+
+            <div>
+
+                <h1>Vendors</h1>
+
+                <p>Vendor Summary</p>
+
+            </div>
+
+        </header>
+
+        <section class="table-section">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>Vendor</th>
+
+                    <th>Transactions</th>
+
+                    <th>Total Deposits</th>
+
+                    <th>Total Payments</th>
+
+                    <th>Net Total</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="vendorTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/vendors.js"></script>
+
+</body>
+
+</html>

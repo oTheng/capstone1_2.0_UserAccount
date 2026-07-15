@@ -49,8 +49,6 @@ function forceLogout(message) {
     transactions = [];
     renderTable([]);
     updateDashboard([]);
-    document.getElementById("reportContent").innerHTML = "";
-    document.getElementById("vendorContent").innerHTML = "";
     searchBox.value = "";
     showAuthScreen();
     if (message) {
@@ -401,14 +399,6 @@ async function loadTransactions() {
 
 }
 
-
-
-document.getElementById("transactionsMenu").onclick=()=>{
-
-    showPage(dashboardPage);
-
-};
-
 // =======================================
 // UPDATE DASHBOARD
 // =======================================
@@ -446,12 +436,6 @@ function updateDashboard(data) {
     transactionCount.textContent = data.length;
 
 }
-
-document.getElementById("dashboardMenu").onclick=()=>{
-
-    showPage(dashboardPage);
-
-};
 
 // =======================================
 // RENDER TABLE
@@ -511,90 +495,6 @@ function renderTable(data) {
     });
 
 }
-
-function buildReports(){
-
-    let deposits=0;
-    let payments=0;
-
-    transactions.forEach(t=>{
-
-        if(t.amount>=0)
-            deposits+=Number(t.amount);
-        else
-            payments+=Number(t.amount);
-
-    });
-
-    document.getElementById("reportContent").innerHTML=`
-
-        <div class="card">
-
-            <h2>Total Deposits</h2>
-
-            <h1>$${deposits.toFixed(2)}</h1>
-
-        </div>
-
-        <div class="card">
-
-            <h2>Total Payments</h2>
-
-            <h1>$${Math.abs(payments).toFixed(2)}</h1>
-
-        </div>
-
-        <div class="card">
-
-            <h2>Balance</h2>
-
-            <h1>$${(deposits+payments).toFixed(2)}</h1>
-
-        </div>
-
-    `;
-
-}
-
-document.getElementById("reportsMenu").onclick=()=>{
-
-    buildReports();
-
-    showPage(reportsPage);
-
-};
-
-function loadVendors(){
-
-    let vendors=[...new Set(transactions.map(t=>t.vendor))];
-
-    let html="<ul>";
-
-    vendors.forEach(v=>{
-
-        html+=`<li>${escapeHtml(v)}</li>`;
-
-    });
-
-    html+="</ul>";
-
-    document.getElementById("vendorContent").innerHTML=html;
-
-}
-
-document.getElementById("vendorsMenu").onclick=()=>{
-
-    loadVendors();
-
-    showPage(vendorsPage);
-
-};
-
-document.getElementById("settingsMenu").onclick=()=>{
-
-    showPage(settingsPage);
-
-};
 
 
 // =======================================
@@ -817,22 +717,6 @@ searchBox.addEventListener("keyup", () => {
     updateDashboard(filtered);
 
 });
-
-const dashboardPage = document.getElementById("dashboardPage");
-const reportsPage = document.getElementById("reportsPage");
-const vendorsPage = document.getElementById("vendorsPage");
-const settingsPage = document.getElementById("settingsPage");
-
-function showPage(page){
-
-    dashboardPage.style.display="none";
-    reportsPage.style.display="none";
-    vendorsPage.style.display="none";
-    settingsPage.style.display="none";
-
-    page.style.display="block";
-
-}
 
 // =======================================
 // START APPLICATION
