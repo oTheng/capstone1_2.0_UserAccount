@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 
-    List<Transaction> findByTransactionType(String transactionType);
+    List<Transaction> findByUserId(Integer userId);
 
-    List<Transaction> findByVendorContainingIgnoreCase(String vendor);
+    List<Transaction> findByUserIdAndTransactionType(Integer userId, String transactionType);
+
+    List<Transaction> findByUserIdAndVendorContainingIgnoreCase(Integer userId, String vendor);
 
 }

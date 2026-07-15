@@ -13,6 +13,10 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    // Owner of this transaction — set from the JWT, never from the request body
+    @Column(name = "user_id")
+    private Integer userId;
+
     @Column(name = "transaction_date")
     private LocalDate transactionDate;
 
@@ -49,6 +53,14 @@ public class Transaction {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public LocalDate getTransactionDate() {

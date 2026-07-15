@@ -3,7 +3,9 @@ package com.accounting_api.services;
 import com.accounting_api.models.Transaction;
 import com.accounting_api.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -13,27 +15,27 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    // Get all transactions
-    public List<Transaction> getAllTransactions() {
-        return transactionRepository.findAll();
+    // Get all transactions belonging to this user
+    public List<Transaction> getAllTransactions(Integer userId) {
+        return transactionRepository.findByUserId(userId);
     }
 
-    // Get transaction by ID
-    public Transaction getTransactionById(Integer id) {
-        return transactionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Transaction not found."));
+    // Get one transaction — 404 if it doesn't exist OR belongs to someone else
+    public Transaction getTransactionById(Integer id, Integer userId) {
+        return getOwnedTransaction(id, userId);
     }
 
-    // Add transaction
-    public Transaction addTransaction(Transaction transaction) {
+    // Add transaction — owner always comes from the token
+    public Transaction addTransaction(Transaction transaction, Integer userId) {
+        transaction.setId(null);
+        transaction.setUserId(userId);
         return transactionRepository.save(transaction);
     }
 
-    // Update transaction
-    public Transaction updateTransaction(Integer id, Transaction updatedTransaction) {
+    // Update transaction (only your own)
+    public Transaction updateTransaction(Integer id, Transaction updatedTransaction, Integer userId) {
 
-        Transaction transaction = transactionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Transaction not found."));
+        Transaction transaction = getOwnedTransaction(id, userId);
 
         transaction.setTransactionDate(updatedTransaction.getTransactionDate());
         transaction.setTransactionTime(updatedTransaction.getTransactionTime());
@@ -45,23 +47,38 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
-    // Delete transaction
-    public void deleteTransaction(Integer id) {
-        transactionRepository.deleteById(id);
+    // Delete transaction (only your own)
+    public void deleteTransaction(Integer id, Integer userId) {
+        Transaction transaction = getOwnedTransaction(id, userId);
+        transactionRepository.delete(transaction);
     }
 
-    // Get deposits only
-    public List<Transaction> getDeposits() {
-        return transactionRepository.findByTransactionType("DEPOSIT");
+    // Get deposits only (this user)
+    public List<Transaction> getDeposits(Integer userId) {
+        return transactionRepository.findByUserIdAndTransactionType(userId, "DEPOSIT");
     }
 
-    // Get payments only
-    public List<Transaction> getPayments() {
-        return transactionRepository.findByTransactionType("PAYMENT");
+    // Get payments only (this user)
+    public List<Transaction> getPayments(Integer userId) {
+        return transactionRepository.findByUserIdAndTransactionType(userId, "PAYMENT");
     }
 
-    // Search by vendor
-    public List<Transaction> searchByVendor(String vendor) {
-        return transactionRepository.findByVendorContainingIgnoreCase(vendor);
+    // Search by vendor (this user)
+    public List<Transaction> searchByVendor(String vendor, Integer userId) {
+        return transactionRepository.findByUserIdAndVendorContainingIgnoreCase(userId, vendor);
+    }
+
+    // Look up a transaction and make sure it belongs to this user.
+    // Returns 404 (not 403) for someone else's transaction so ids can't be probed.
+    private Transaction getOwnedTransaction(Integer id, Integer userId) {
+
+        Transaction transaction = transactionRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Transaction not found."));
+
+        if (!userId.equals(transaction.getUserId())) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Transaction not found.");
+        }
+
+        return transaction;
     }
 }

@@ -17,8 +17,64 @@
 </head>
 
 <body>
+<!-- ================= Login / Register ================= -->
 
-<div class="container">
+<div id="authContainer" class="auth-container">
+
+    <div class="auth-card">
+
+        <h1>Accounting Ledger</h1>
+
+        <p>Login or create an account</p>
+
+        <div id="authMessage"></div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+
+            <h2>Login</h2>
+
+            <label>Email</label>
+            <input id="loginEmail" type="email" required>
+
+            <label>Password</label>
+            <input id="loginPassword" type="password" required>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <hr>
+
+        <!-- Register Form -->
+        <form id="registerForm">
+
+            <h2>Register</h2>
+
+            <label>Full Name</label>
+            <input id="registerFullName" type="text" required>
+
+            <label>Email</label>
+            <input id="registerEmail" type="email" required>
+
+            <label>Password</label>
+            <input id="registerPassword" type="password" required>
+
+            <label>Phone Number</label>
+            <input id="registerPhoneNumber" type="text">
+
+            <label>Profile Bio</label>
+            <textarea id="registerProfileBio"></textarea>
+
+            <button type="submit">Create Account</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="container" id="appContainer" style="display:none;">
 
     <!-- ================= Sidebar ================= -->
 
@@ -58,7 +114,6 @@
                 <i class="fa-solid fa-gear"></i>
                 Settings
             </li>
-
         </ul>
 
     </aside>
@@ -130,6 +185,21 @@
                 Refresh
 
             </button>
+            <div class="user-header">
+
+                <p id="profileName">Not logged in</p>
+
+                <button id="profileBtn">
+                    <i class="fa-solid fa-user"></i>
+                    Profile
+                </button>
+
+                <button id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </button>
+
+            </div>
 
         </header>
 
@@ -324,6 +394,40 @@
 
 </div>
 
+<!-- ================= Profile Modal ================= -->
+<div class="modal" id="profileModal">
+
+    <div class="modal-content">
+
+        <span class="close-profile">&times;</span>
+
+        <h2>My Profile</h2>
+
+        <form id="profileForm">
+
+            <label>Full Name</label>
+            <input id="profileFullName" type="text" required>
+
+            <label>Email</label>
+            <input id="profileEmail" type="email" disabled>
+
+            <label>Phone Number</label>
+            <input id="profilePhoneNumber" type="text">
+
+            <label>Profile Bio</label>
+            <textarea id="profileBio"></textarea>
+
+            <button type="submit">
+                Save Profile
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- Load the script last so every element above already exists -->
 <script src="js/app.js"></script>
 
 </body>
